@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>連接資料庫介面</title>
+    <link rel="stylesheet" href="list.css">
+
+</head>
+
+<body>
+    <nav>
+        <!-- 左上半部欄位  -->
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="close.png" alt="">
+            </div>
+
+            <span class="logo_name">操作功能</span>
+        </div>
+
+        <hr>
+        <!-- 左下半部欄位 -->
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="#" onclick="clearAll() , showAddItem()">
+                        <i><img src="request40.png" alt=""></i>
+                        <span class="link-name">新增店家</span>
+                    </a></li>
+                <li><a href="#" onclick="clearAll() , showDeleteItem()">
+                        <i><img src="keyrecord40.png" alt=""></i>
+                        <span class="link-name">刪除店家</span>
+                    </a></li>
+                <li><a href="#" onclick="clearAll() , showUpdateItem()">
+                        <i><img src="keyrecord40.png" alt=""></i>
+                        <span class="link-name">修改店家</span>
+                    </a></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="board">
+        <!-- 右上半部欄位  -->
+        <div class="top">
+            <i class="sidebar-toggle"><img src="left.png" class="leftArrow" id="leftArrow"></i>
+            <img src="user.jpg" alt="">
+
+        </div>
+        <!-- 右下半部欄位  -->
+        <div class="board-content">
+
+            <!-- <div class="additem" id="additem">
+                <h1>新增項目</h1>
+                <div class="addContainer">
+                    <div class="title">
+                        <p>餐廳名稱</p>
+                        <p>餐廳網站</p>
+                        <p>餐廳電話</p>
+                        <p>餐廳地址</p>
+                    </div>
+                    <hr>
+                    <div class="text">
+                        <p><input type="text" placeholder="八方雲集"></p>
+                        <p><input type="text" placeholder="https://www.8way.com.tw/"></p>
+                        <p><input type="text" placeholder="0224628282"></p>
+                        <p><input type="text" placeholder="202基隆市中正區中正路794號"></p>
+
+                    </div>
+                </div>
+
+
+                <button>確認新增</button>
+            </div> -->
+
+            <!-- 新增資料 -->
+            <div class="additem" id="additem">
+                <h1>新增資料</h1>
+                <div class="addContainer">
+                
+                    <form action="insert.php" method="post">
+                        <div class="title">
+                            <p>餐廳名稱</p>
+                            <p>餐廳網站</p>
+                            <p>餐廳電話</p>
+                            <p>餐廳地址</p>
+                            <p>餐廳營業時間</p>
+                        </div>
+                        <hr>
+                        <div class="text">
+                            <p><input type="text" name="name"></p>
+                            <p><input type="text" name="website"></p>
+                            <p><input type="text" name="phone"></p>
+                            <p><input type="text" name="address"></p>
+                            <p><input type="text" name="business_hour"></p>
+                        </div>
+                        <input type="submit" name="submit" value="新增" class="go">
+                    </form>
+                    <!-- <button>確認新增</button> -->
+                </div>
+
+            </div>
+
+
+            <!-- 刪除項目 -->
+            <div class="deleteitem" id="deleteitem">
+                <h1>刪除項目</h1>
+                <div class="deleteContainer">
+
+                    <div class="title">
+                        <!-- 標題 -->
+                        <p>餐廳名稱</p>
+                        <p>餐廳網站</p>
+                        <p>餐廳電話</p>
+                        <p>餐廳地址</p>
+                    </div>
+                    <hr>
+                    <div class="text">
+                        <!-- 內容 -->
+                        <p><input type="text" placeholder="八方雲集"></p>
+                        <p><input type="text" placeholder="https://www.8way.com.tw/"></p>
+                        <p><input type="text" placeholder="0224628282"></p>
+                        <p><input type="text" placeholder="202基隆市中正區中正路794號"></p>
+
+                    </div>
+                </div>
+                <button>確認刪除</button>
+            </div>
+
+            <!-- 修改項目 -->
+            <div class="updateitem" id="updateitem">
+                <h1>修改項目</h1>
+                <div class="updateContainer">
+
+                    <div class="title">
+                        <!-- 標題 -->
+                        <p>餐廳名稱</p>
+                        <p>餐廳網站</p>
+                        <p>餐廳電話</p>
+                        <p>餐廳地址</p>
+                    </div>
+                    <hr>
+                    <div class="text">
+                        <!-- 內容 -->
+                        <p><input type="text" placeholder="八方雲集"></p>
+                        <p><input type="text" placeholder="https://www.8way.com.tw/"></p>
+                        <p><input type="text" placeholder="0224628282"></p>
+                        <p><input type="text" placeholder="202基隆市中正區中正路794號"></p>
+
+                    </div>
+                </div>
+                <button>確認更改</button>
+            </div>
+        </div>
+
+
+        <div class="showform" id="table-container">
+            <!-- <form action="inform.php" method="get">
+                <h3>查詢資料(以表格方式呈現資料庫內的資料)</h3>
+                <input type="submit" value="查詢">
+            </form> -->
+
+            <!-- <form action="insert.php" method="post">
+                <h3>新增資料</h3>
+                餐廳名稱:<input type="text" name="name">
+                <br>
+                <br>
+                餐廳網站:<input type="text" name="website">
+                <br>
+                <br>
+                餐廳電話:<input type="text" name="phone">
+                <br>
+                <br>
+                餐廳地址:<input type="text" name="address">
+                <br>
+                <br>
+                時間:<input type="text" name="business_hour">
+                <br>
+                <input type="submit" name="submit" value="新增">
+            </form> -->
+
+        </div>
+    </section>
+
+
+    <script>
+        const body = document.querySelector("body"),
+            sidebar = body.querySelector("nav"),
+            leftArrow = document.getElementById("leftArrow");
+        sidebarToggle = body.querySelector(".sidebar-toggle");
+
+        sidebarToggle.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+            if (sidebar.classList.contains("close")) {
+                localStorage.setItem("status", "close");
+                leftArrow.classList.add("show");
+            } else {
+                localStorage.setItem("status", "open");
+                leftArrow.classList.remove("show");
+            }
+        })
+
+        // 當點擊左側選當後在右側顯示
+        let additem = document.getElementById("additem");
+        let deleteitem = document.getElementById("deleteitem");
+        let updateitem = document.getElementById("updateitem");
+
+        function clearAll() {
+            additem.classList.remove("show");
+            deleteitem.classList.remove("show");
+            updateitem.classList.remove("show");
+
+        }
+
+        function showAddItem() {
+            additem.classList.add("show");
+
+        }
+        function showDeleteItem() {
+            deleteitem.classList.add("show");
+        }
+        function showUpdateItem() {
+            updateitem.classList.add("show");
+        }
+
+
+    </script>
+</body>
+
+</html>

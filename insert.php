@@ -11,5 +11,4 @@ $hour = $_POST["business_hour"];
 $query = ("insert into restaurant values(?,?,?,?,?)");
 $stmt = $db->prepare($query);
 $stmt->execute(array($name,$website,$phone,$address,$hour)); 
-header("Location: inform.php");
 ?>  

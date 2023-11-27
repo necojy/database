@@ -259,6 +259,34 @@ nav.close~.board .top {
     padding-bottom: 10px;
 }
 
+/* 顯示項目-------------------------------------------------------------------- */
+
+.allitem {
+    display: none;
+}
+
+.allitem.show {
+    display: block;
+}
+
+.allContainer {
+    border: solid;
+    display: flex;
+    padding-left: 20px;
+    flex-direction: column;
+
+}
+
+.allitem form {
+    /* width: 100%; */
+    /* font-size: 40px; */
+    margin-right: 20px;
+}
+
+.allitem .go{
+    width: 100%;
+}
+
 /* 新增項目-------------------------------------------------------------------- */
 
 .additem {
@@ -267,6 +295,12 @@ nav.close~.board .top {
 
 .additem.show {
     display: block;
+}
+.allitem button{
+    width: 100%;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 10px;
 }
 
 .addContainer {
@@ -277,6 +311,16 @@ nav.close~.board .top {
 
 }
 
+.allItemtext{
+    display: flex;
+}
+.allItemtext p{
+    font-size: 15px;
+
+}
+.allItemtext .wrap{
+    margin-right: auto;
+}
 .additem form {
     /* width: 100%; */
     /* font-size: 40px; */

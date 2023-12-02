@@ -11,7 +11,7 @@ echo count($result)."+";
 for ($i = 0; $i < count($result); $i++) 
 {
     echo $result[$i]['name']."|"; // 若有 null ，將 null 換為空字串 ''
-    echo $result[$i]['kind']."|";
+    echo $result[$i]['kinds']."|";
     echo isset($result[$i]['address']) ? $result[$i]['address']."|" : ' '."|";
     echo "\n";
 }

@@ -377,3 +377,51 @@ nav.close~.board .top {
     flex-direction: column;
 
 }
+
+
+/* 修改項目-------------------------------------------- */
+
+.kinditem {
+    display: none;
+}
+
+.kinditem.show {
+    display: block;
+}
+
+.kinditem button {
+    width: 100%;
+    font-size: 40px;
+}
+
+.kindContainer {
+    border: solid;
+    display: flex;
+    padding-left: 20px;
+    flex-direction: column;
+
+}
+
+
+/* 修改項目-------------------------------------------- */
+
+.NTOUcard {
+    display: none;
+}
+
+.NTOUcard.show {
+    display: block;
+}
+
+.NTOUcard button {
+    width: 100%;
+    font-size: 40px;
+}
+
+.NTOUcardContainer {
+    border: solid;
+    display: flex;
+    padding-left: 20px;
+    flex-direction: column;
+
+}

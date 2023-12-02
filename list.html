@@ -26,7 +26,7 @@
             <ul class="nav-links">
                 <li><a href="#" onclick="clearAll() , showAllItem()">
                         <i><img src="request40.png" alt=""></i>
-                        <span class="link-name">顯示店家</span>
+                        <span class="link-name">顯示全部店家</span>
                     </a></li>
                 <li><a href="#" onclick="clearAll() , showAddItem()">
                         <i><img src="request40.png" alt=""></i>
@@ -39,6 +39,14 @@
                 <li><a href="#" onclick="clearAll() , showUpdateItem()">
                         <i><img src="keyrecord40.png" alt=""></i>
                         <span class="link-name">修改店家</span>
+                    </a></li>
+                <li><a href="#" onclick="clearAll() , showKindItem()">
+                        <i><img src="keyrecord40.png" alt=""></i>
+                        <span class="link-name">顯示店家總類</span>
+                    </a></li>
+                <li><a href="#" onclick="clearAll() , showNTOUItem()">
+                        <i><img src="keyrecord40.png" alt=""></i>
+                        <span class="link-name">可用海大卡的店家</span>
                     </a></li>
             </ul>
         </div>
@@ -54,7 +62,7 @@
         <div class="board-content">
             <!-- 顯示資料 -->
             <div class="allitem" id="allitem">
-                <h1>顯示資料</h1>
+                <h1>顯示全部店家</h1>
                 <button onclick="showRestaurant()">顯示全部店家</button>
                 <div class="allContainer">
 
@@ -79,7 +87,6 @@
                 </div>
 
             </div>
-
 
             <!-- 新增資料 -->
             <div class="additem" id="additem">
@@ -108,7 +115,6 @@
                 </div>
 
             </div>
-
 
             <!-- 刪除項目 -->
             <div class="deleteitem" id="deleteitem">
@@ -148,7 +154,55 @@
                     </div>
                     <button type="submit">確認更改</button>
                 </form>
-                
+
+            </div>
+
+            <!-- 顯示總類項目 -->
+            <div class="kinditem" id="kinditem">
+                <h1>顯示全部店家</h1>
+                <button onclick="showAllKindRestaurant()">顯示全部店家</button>
+
+                <form action="showAllRestaurantKind.php" method="POST">
+                    <div class="kindContainer">
+                        <div class="title">
+                            <p id="restaurantName">餐廳名稱</p>
+                            <p>餐廳總類</p>
+                            <p>餐廳地址</p>
+                        </div>
+
+                        <div class="allItemtext" id="allItemtext">
+                            <p id="kindAllname"></p>
+                            <p id="kindAllkind"></p>
+                            <p id="kindAlladdress"></p>
+                            <!-- <br> -->
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+            <!-- 顯示可用海大卡店家 -->
+            <div class="NTOUcard" id="NTOUcard">
+                <h1>顯示可用海大卡店家</h1>
+                <button onclick="showAllNTOUcardRestaurant()">顯示可用海大卡店家</button>
+
+                <form action="showAllRestaurantKind.php" method="POST">
+                    <div class="NTOUcardContainer">
+                        <div class="title">
+                            <p id="restaurantName">餐廳名稱</p>
+                            <p>餐廳總類</p>
+                            <p>餐廳地址</p>
+                        </div>
+
+                        <div class="allItemtext" id="allItemtext">
+                            <p id="kindAllname"></p>
+                            <p id="kindAllkind"></p>
+                            <p id="kindAlladdress"></p>
+                            <!-- <br> -->
+                        </div>
+                    </div>
+                </form>
+
             </div>
         </div>
 
@@ -177,12 +231,16 @@
         let additem = document.getElementById("additem");
         let deleteitem = document.getElementById("deleteitem");
         let updateitem = document.getElementById("updateitem");
+        let kinditem = document.getElementById("kinditem");
+        let NTOUcard = document.getElementById("NTOUcard");
 
         function clearAll() {
             allitem.classList.remove("show");
             additem.classList.remove("show");
             deleteitem.classList.remove("show");
             updateitem.classList.remove("show");
+            kinditem.classList.remove("show");
+            NTOUcard.classList.remove("show");
 
         }
         function showAllItem() {
@@ -199,7 +257,14 @@
             updateitem.classList.add("show");
         }
 
+        function showKindItem() {
+            kinditem.classList.add("show");
+        }
 
+        function showNTOUItem() {
+            NTOUcard.classList.add("show");
+        }
+        // 1.顯示全部餐廳
         function showRestaurant() {
             document.getElementById("Allname").innerText = "";
             document.getElementById("Allwebsite").innerText = "";
@@ -218,7 +283,7 @@
                     var count = total[0];
                     var data = total[1].split("\n");
                     // 將數據分別設定給各個對應的 HTML 元素
-                    
+
                     for (var i = 0; i < count; i++) {
                         var temp = data[i].split("|");
                         document.getElementById("Allname").innerText += (temp[0] || "null") + "\n";
@@ -235,6 +300,88 @@
 
 
         }
+
+        // 2.顯示餐廳總類
+        function showAllKindRestaurant() {
+            document.getElementById("kindAllname").innerText = "";
+            document.getElementById("kindAllkind").innerText = "";
+            document.getElementById("kindAlladdress").innerText = "";
+
+
+            // 使用AJAX呼叫PHP檔案
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    // 更新餐廳名稱
+
+                    var total = this.responseText.split("+");
+                    var count = total[0];
+                    var data = total[1].split("\n");
+                    // 將數據分別設定給各個對應的 HTML 元素
+
+                    for (var i = 0; i < count; i++) {
+                        var temp = data[i].split("|");
+                        document.getElementById("kindAllname").innerText += (temp[0] || "null") + "\n";
+                        document.getElementById("kindAllkind").innerText += (temp[1] || "null") + "\n";
+                        document.getElementById("kindAlladdress").innerText += (temp[2] || "null") + "\n";
+                    }
+                }
+            };
+            xhr.open("Post", "showAllRestaurantKind.php", true);
+            xhr.send();
+
+
+        }
+
+
+        // 3.顯示可用海大卡餐廳
+        function showAllNTOUcardRestaurant() {
+            document.getElementById("Allname").innerText = "";
+            document.getElementById("Allwebsite").innerText = "";
+            document.getElementById("Allphone").innerText = "";
+            document.getElementById("Alladdress").innerText = "";
+            document.getElementById("Allbusiness_hour").innerText = "";
+
+
+            // 使用AJAX呼叫PHP檔案
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    // 更新餐廳名稱
+
+                    var total = this.responseText.split("+");
+                    var count = total[0];
+                    var data = total[1].split("\n");
+                    // 將數據分別設定給各個對應的 HTML 元素
+
+                    for (var i = 0; i < count; i++) {
+                        var temp = data[i].split("|");
+                        document.getElementById("Allname").innerText += (temp[0] || "null") + "\n";
+                        document.getElementById("Allwebsite").innerText += (temp[1] || "null") + "\n";
+                        document.getElementById("Allphone").innerText += (temp[2] || "null") + "\n";
+                        document.getElementById("Alladdress").innerText += (temp[3] || "null") + "\n";
+                        document.getElementById("Allbusiness_hour").innerText += (temp[4] || "null") + "\n";
+                        // document.getElementById("wrap") = "wr";
+                    }
+                }
+            };
+            xhr.open("Post", "showAllRestaurant.php", true);
+            xhr.send();
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
     </script>
 </body>
 

@@ -313,6 +313,7 @@ nav.close~.board .top {
 
 .allItemtext{
     display: flex;
+    border: solid;
 }
 .allItemtext p{
     font-size: 15px;

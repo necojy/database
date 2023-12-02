@@ -122,7 +122,7 @@
                         <hr>
                         <div class="text">
                             <!-- 內容 -->
-                            <p><input type="text" placeholder="八方雲集"></p>
+                            <p><input type="text" name="name" placeholder="八方雲集"></p>
                         </div>
                     </div>
                     <button type="submit">確認刪除</button>
@@ -132,7 +132,7 @@
             <!-- 修改項目 -->
             <div class="updateitem" id="updateitem">
                 <h1>修改餐廳營業時間</h1>
-                <form action="insert.php" method="POST"></form>
+                <form action="updateBusinessHour.php" method="POST">
                     <div class="updateContainer">
                         <div class="title">
                             <!-- 標題 -->
@@ -230,8 +230,10 @@
                     }
                 }
             };
-            xhr.open("GET", "showAllRestaurant.php", true);
+            xhr.open("Post", "showAllRestaurant.php", true);
             xhr.send();
+
+
         }
     </script>
 </body>

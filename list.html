@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>連接資料庫介面</title>
-    <link rel="stylesheet" href="list2.css">
+    <link rel="stylesheet" href="test.css">
 
 </head>
 
@@ -45,10 +45,14 @@
                         <span class="link-name">顯示店家總類</span>
                     </a></li>
 
-                <li><a href="#"
-                        onclick="clearAll() , showNTOUItem() , showNumberOfNTOUCard()">
+                <li><a href="#" onclick="clearAll() , showNTOUItem() , showNumberOfNTOUCard()">
                         <i><img src="keyrecord40.png" alt=""></i>
                         <span class="link-name">可用海大卡的店家</span>
+                    </a></li>
+
+                <li><a href="#" onclick="clearAll() ,showAddCategory()">
+                        <i><img src="keyrecord40.png" alt=""></i>
+                        <span class="link-name">新增店家種類</span>
                     </a></li>
             </ul>
         </div>
@@ -113,7 +117,6 @@
                         </div>
                         <input type="submit" name="submit" value="新增" class="go">
                     </form>
-                    <!-- <button>確認新增</button> -->
                 </div>
 
             </div>
@@ -130,7 +133,7 @@
                         <hr>
                         <div class="text">
                             <!-- 內容 -->
-                            <p><input type="text" name="name" placeholder="八方雲集"></p>
+                            <p><input type="text" name="name" placeholder="八方雲集" required></p>
                         </div>
                     </div>
                     <button type="submit">確認刪除</button>
@@ -150,8 +153,8 @@
                         <hr>
                         <div class="text">
                             <!-- 內容 -->
-                            <p><input type="text" name="name"></p>
-                            <p><input type="text" name="business_hour"></p>
+                            <p><input type="text" name="name" required></p>
+                            <p><input type="text" name="business_hour" required></p>
                         </div>
                     </div>
                     <button type="submit">確認更改</button>
@@ -210,6 +213,26 @@
                 </div>
 
             </div>
+
+            <!-- 新增種類-->
+            <div class="addCatatory" id="addCatatory">
+                <div class="addCatatoryContainer">
+
+                    <form action="insertCategory.php" method="POST">
+                        <div class="title">
+                            <p>餐廳名稱</p>
+                            <p>餐廳種類</p>
+                        </div>
+                        <hr>
+                        <div class="text">
+                            <p><input type="text" name="name" required></p>
+                            <p><input type="text" name="kinds" required></p>
+                        </div>
+                        <input type="submit" name="submit" value="新增" class="go">
+                    </form>
+                </div>
+
+            </div>
         </div>
 
     </section>
@@ -239,6 +262,7 @@
         let updateitem = document.getElementById("updateitem");
         let kinditem = document.getElementById("kinditem");
         let NTOUcard = document.getElementById("NTOUcard");
+        let addCatatory = document.getElementById("addCatatory");
 
         function clearAll() {
             allitem.classList.remove("show");
@@ -247,6 +271,7 @@
             updateitem.classList.remove("show");
             kinditem.classList.remove("show");
             NTOUcard.classList.remove("show");
+            addCatatory.classList.remove("show");
 
         }
         function showAllItem() {
@@ -269,8 +294,12 @@
 
         function showNTOUItem() {
             NTOUcard.classList.add("show");
-
         }
+        function showAddCategory() {
+            addCatatory.classList.add("show");
+        }
+
+
         // 1.顯示全部餐廳
         function showRestaurant() {
             document.getElementById("Allname").innerText = "";
@@ -342,7 +371,6 @@
 
 
         // 3.顯示可用海大卡餐廳
-
         function showAllNTOUcardRestaurant() {
             document.getElementById("NTOUAllname").innerText = "";
             document.getElementById("NTOUAllwebsite").innerText = "";
@@ -393,7 +421,6 @@
             xhr.open("GET", "countNTOUCard.php", true);
             xhr.send();
         }
-
 
 
 

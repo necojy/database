@@ -270,6 +270,7 @@ nav.close~.board .top {
 }
 
 .allContainer {
+    border: solid;
     display: flex;
     padding-left: 20px;
     flex-direction: column;
@@ -418,6 +419,29 @@ nav.close~.board .top {
 }
 
 .NTOUcardContainer {
+    border: solid;
+    display: flex;
+    padding-left: 20px;
+    flex-direction: column;
+
+}
+
+/* 修改項目-------------------------------------------- */
+
+.addCatatory {
+    display: none;
+}
+
+.addCatatory.show {
+    display: block;
+}
+
+.addCatatory button {
+    width: 100%;
+    font-size: 40px;
+}
+
+.addCatatoryContainer {
     border: solid;
     display: flex;
     padding-left: 20px;

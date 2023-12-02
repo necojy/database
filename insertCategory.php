@@ -3,11 +3,20 @@
 include_once "db_conn.php";
 
 $name = $_POST["name"];
-$kind = $_POST["kind"];
-$ntou_card = $_POST["ntou_card"];
-$serves_way = $_POST["serves_way"];
+$kind = $_POST["kinds"];
 
-$query = ("INSERT INTO category VALUES (?, ?, ?, ?)");
+$query = ("SELECT ntou_card, serves_way FROM category WHERE name = ?");
 $stmt = $db->prepare($query);
-$stmt->execute(array($name,$kind,$ntou_card,$serves_way)); 
+$stmt->execute(array($name));
+$result = $stmt->fetch();
+
+if($result != false){
+    $ntou_card = $result["ntou_card"];
+    $serves_way = $result["serves_way"];
+    $query = ("INSERT INTO category VALUES (?, ?, ?, ?)");
+    $stmt = $db->prepare($query);
+    $stmt->execute(array($name,$kind,$ntou_card,$serves_way)); 
+}
+
+
 ?> 

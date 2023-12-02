@@ -1,0 +1,426 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+}
+
+/* 側欄容器 */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    padding: 10px 14px;
+    background-color: rgba(210, 210, 210, 0.2);
+    border-right: 1px solid #e6e5e5;
+    text-shadow: 0px 15px 5px rgba(0, 0, 0, 0.1), 10px 20px 5px rgba(0, 0, 0, 0.04), -10px 20px 5px rgba(0, 0, 0, 0.04);
+    transition: all 0.5s ease;
+}
+
+nav.close {
+    width: 73px;
+}
+
+/* 上半部欄位 */
+nav .logo-name {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /* border-bottom: solid 2px; */
+}
+
+nav .logo-image {
+    display: flex;
+    justify-content: center;
+    min-width: 45px;
+}
+
+nav .logo-image img {
+    width: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+nav .logo-name .logo_name {
+    font-size: 22px;
+    font-weight: 600;
+    color: #000;
+    margin-left: 14px;
+    transition: all 0.5s ease;
+}
+
+nav.close .logo_name {
+    opacity: 0;
+    pointer-events: none;
+}
+
+nav .menu-items {
+    margin-top: 40px;
+    height: calc(100% - 90px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu-items li {
+    list-style: none;
+}
+
+.menu-items li a:hover {
+    background-color: white;
+    border-radius: 20px;
+}
+
+.menu-items li a {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    text-decoration: none;
+    position: relative;
+}
+
+.nav-links li a:hover:before {
+    content: "";
+    position: absolute;
+    left: -7px;
+    height: 50px;
+    width: 5px;
+    /* border-radius: 50%; */
+    background-color: rgb(255, 200, 0);
+}
+
+.nav-links li a:hover i,
+.nav-links li a:hover .link-name {
+    color: rgb(255, 200, 0);
+}
+
+.menu-items li a i {
+    font-size: 24px;
+    min-width: 45px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #70707071;
+}
+
+.menu-items li a .link-name {
+    padding-left: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #000000;
+    transition: all 0.2s ease;
+}
+
+
+nav.close li a .link-name {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.board {
+    position: relative;
+    left: 250px;
+    background-color: #FFF;
+    min-height: 100vh;
+    width: calc(100% - 250px);
+    padding: 10px 14px;
+    transition: all 0.5s ease;
+}
+
+nav.close~.board {
+    left: 73px;
+    width: calc(100% - 73px);
+}
+
+.board .top {
+    position: fixed;
+    top: 0;
+    left: 250px;
+    display: flex;
+    width: calc(100% - 250px);
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    background-color: #FFF;
+    transition: all 0.5s ease;
+    z-index: 10;
+
+}
+
+nav.close~.board .top {
+    left: 73px;
+    width: calc(100% - 73px);
+}
+
+.board .top .sidebar-toggle {
+    font-size: 26px;
+    color: #000;
+    cursor: pointer;
+}
+
+.top img {
+    width: 40px;
+    border-radius: 50%;
+}
+
+.leftArrow.show {
+    transform: rotate(180deg);
+}
+
+
+
+/* 右側容器 */
+.board {
+    position: relative;
+    left: 250px;
+    background-color: #FFF;
+    min-height: 100vh;
+    width: calc(100% - 250px);
+    padding: 10px 14px;
+    transition: all 0.5s ease;
+}
+
+nav.close~.board {
+    left: 73px;
+    width: calc(100% - 73px);
+}
+
+.board .top {
+    position: fixed;
+    top: 0;
+    left: 250px;
+    display: flex;
+    width: calc(100% - 250px);
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    background-color: #FFF;
+    transition: all 0.5s ease;
+    z-index: 10;
+
+}
+
+nav.close~.board .top {
+    left: 73px;
+    width: calc(100% - 73px);
+}
+
+.board .top .sidebar-toggle {
+    font-size: 26px;
+    color: #000;
+    cursor: pointer;
+}
+
+.top img {
+    width: 40px;
+    border-radius: 50%;
+}
+
+.leftArrow.show {
+    transform: rotate(180deg);
+}
+
+/* 右下區域-------------------------------------------------------------------------------------------- */
+.board-content {
+    margin-top: 60px;
+}
+
+.board-content p {
+    width: 25%;
+    font-size: 30px;
+}
+
+.board-content input {
+    font-size: 20px;
+    width: 90%;
+}
+
+.board-content h1 {
+    display: flex;
+    font-size: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    display: flex;
+}
+
+.text {
+    display: flex;
+    padding-bottom: 10px;
+}
+
+/* 顯示項目-------------------------------------------------------------------- */
+
+.allitem {
+    display: none;
+}
+
+.allitem.show {
+    display: block;
+}
+
+.allContainer {
+    display: flex;
+    padding-left: 20px;
+    flex-direction: column;
+
+}
+
+.allitem form {
+    /* width: 100%; */
+    /* font-size: 40px; */
+    margin-right: 20px;
+}
+
+.allitem .go{
+    width: 100%;
+}
+
+/* 新增項目-------------------------------------------------------------------- */
+
+.additem {
+    display: none;
+}
+
+.additem.show {
+    display: block;
+}
+.allitem button{
+    width: 100%;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.addContainer {
+    border: solid;
+    display: flex;
+    padding-left: 20px;
+    flex-direction: column;
+
+}
+
+.allItemtext{
+    display: flex;
+    border: solid;
+}
+.allItemtext p{
+    font-size: 15px;
+
+}
+.allItemtext .wrap{
+    margin-right: auto;
+}
+.additem form {
+    /* width: 100%; */
+    /* font-size: 40px; */
+    margin-right: 20px;
+}
+
+.additem .go{
+    width: 100%;
+}
+
+/* 刪除項目-------------------------------------------- */
+
+.deleteitem {
+    display: none;
+}
+
+.deleteitem.show {
+    display: block;
+}
+
+.deleteitem button {
+    width: 100%;
+    font-size: 40px;
+}
+
+.deleteContainer {
+    border: solid;
+    display: flex;
+    padding-left: 20px;
+    flex-direction: column;
+
+}
+
+/* 修改項目-------------------------------------------- */
+
+.updateitem {
+    display: none;
+}
+
+.updateitem.show {
+    display: block;
+}
+
+.updateitem button {
+    width: 100%;
+    font-size: 40px;
+}
+
+.updateContainer {
+    border: solid;
+    display: flex;
+    padding-left: 20px;
+    flex-direction: column;
+
+}
+
+
+/* 修改項目-------------------------------------------- */
+
+.kinditem {
+    display: none;
+}
+
+.kinditem.show {
+    display: block;
+}
+
+.kinditem button {
+    width: 100%;
+    font-size: 40px;
+}
+
+.kindContainer {
+    border: solid;
+    display: flex;
+    padding-left: 20px;
+    flex-direction: column;
+
+}
+
+
+/* 修改項目-------------------------------------------- */
+
+.NTOUcard {
+    display: none;
+}
+
+.NTOUcard.show {
+    display: block;
+}
+
+.NTOUcard button {
+    width: 100%;
+    font-size: 40px;
+}
+
+.NTOUcardContainer {
+    border: solid;
+    display: flex;
+    padding-left: 20px;
+    flex-direction: column;
+
+}

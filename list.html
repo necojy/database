@@ -370,41 +370,41 @@
         }
 
 
-        // 3.顯示可用海大卡餐廳
-        function showAllNTOUcardRestaurant() {
-            document.getElementById("NTOUAllname").innerText = "";
-            document.getElementById("NTOUAllwebsite").innerText = "";
-            document.getElementById("NTOUAllphone").innerText = "";
-            document.getElementById("NTOUAlladdress").innerText = "";
-            document.getElementById("NTOUAllbusiness_hour").innerText = "";
+            // 3.顯示可用海大卡餐廳
+            function showAllNTOUcardRestaurant() {
+                document.getElementById("NTOUAllname").innerText = "";
+                document.getElementById("NTOUAllwebsite").innerText = "";
+                document.getElementById("NTOUAllphone").innerText = "";
+                document.getElementById("NTOUAlladdress").innerText = "";
+                document.getElementById("NTOUAllbusiness_hour").innerText = "";
 
 
-            // 使用AJAX呼叫PHP檔案
-            var xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    // 更新餐廳名稱
+                // 使用AJAX呼叫PHP檔案
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        // 更新餐廳名稱
 
-                    var total = this.responseText.split("+");
-                    var count = total[0];
-                    var data = total[1].split("\n");
-                    // 將數據分別設定給各個對應的 HTML 元素
+                        var total = this.responseText.split("+");
+                        var count = total[0];
+                        var data = total[1].split("\n");
+                        // 將數據分別設定給各個對應的 HTML 元素
 
-                    for (var i = 0; i < count; i++) {
-                        var temp = data[i].split("|");
-                        document.getElementById("NTOUAllname").innerText += (temp[0] || "null") + "\n";
-                        document.getElementById("NTOUAllwebsite").innerText += (temp[1] || "null") + "\n";
-                        document.getElementById("NTOUAllphone").innerText += (temp[2] || "null") + "\n";
-                        document.getElementById("NTOUAlladdress").innerText += (temp[3] || "null") + "\n";
-                        document.getElementById("NTOUAllbusiness_hour").innerText += (temp[4] || "null") + "\n";
-                        // document.getElementById("wrap") = "wr";
+                        for (var i = 0; i < count; i++) {
+                            var temp = data[i].split("|");
+                            document.getElementById("NTOUAllname").innerText += (temp[0] || "null") + "\n";
+                            document.getElementById("NTOUAllwebsite").innerText += (temp[1] || "null") + "\n";
+                            document.getElementById("NTOUAllphone").innerText += (temp[2] || "null") + "\n";
+                            document.getElementById("NTOUAlladdress").innerText += (temp[3] || "null") + "\n";
+                            document.getElementById("NTOUAllbusiness_hour").innerText += (temp[4] || "null") + "\n";
+                            // document.getElementById("wrap") = "wr";
+                        }
                     }
-                }
-            };
-            xhr.open("GET", "showNCRestaurant.php", true);
-            xhr.send();
+                };
+                xhr.open("GET", "showNCRestaurant.php", true);
+                xhr.send();
 
-        }
+            }
 
         //3-1 計算海大卡店家數量
         function showNumberOfNTOUCard() {

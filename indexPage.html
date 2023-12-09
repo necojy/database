@@ -7,8 +7,8 @@
     <title>Bootstrap demo</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <style>
-        .col-md-5 ,
-        .col-md-6{
+        .col-md-5,
+        .col-md-6 {
             border: solid;
             /* 設定底部間隔，您可以調整這個值 */
         }
@@ -41,7 +41,6 @@
             text-decoration: none;
             font-size: 30px;
         }
-
     </style>
 </head>
 
@@ -63,13 +62,11 @@
 
             <!-- collapse：無論任何螢幕大小，你都不會看到有選單在頂部。 nav-collapse：當螢幕變小時，選單會改為直行顯示。 -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">首頁</a>
+                        <a class="nav-link" href="HomePage.html">首頁</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"></a>
-                    </li>
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -82,16 +79,18 @@
                             <li><button class="dropdown-item" onclick="showCategory()">顯示餐廳品項種類 </button></li>
 
                         </ul>
-                    </li>
+                    </li>  
                 </ul>
+                <a class="nav-link" href="list.html">編輯頁面</a>
+
             </div>
         </div>
     </nav>
     <p id="NumberOfNTOUCard"></p>
 
     <div class="container">
-            
-            <div class="row">
+
+        <div class="row">
 
         </div>
     </div>
@@ -224,61 +223,61 @@
                 });
         }
 
-        function showCategory(){
+        function showCategory() {
             clearAll();
 
             fetch('showAllRestaurantKind.php', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-})
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.text();
-    })
-    .then(data => {
-        var total = data.split("+");
-        var count = total[0];
-        var items = total[1].split("\n");
-        var parentContainer = document.querySelector(".row");
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    var total = data.split("+");
+                    var count = total[0];
+                    var items = total[1].split("\n");
+                    var parentContainer = document.querySelector(".row");
 
-        for (var i = 0; i < count; i++) {
-            var temp = items[i].split("|");
+                    for (var i = 0; i < count; i++) {
+                        var temp = items[i].split("|");
 
-            var colDiv = document.createElement("div");
-            colDiv.className = "col-12 col-md-6 mt-5 me-auto ms-auto";
+                        var colDiv = document.createElement("div");
+                        colDiv.className = "col-12 col-md-6 mt-5 me-auto ms-auto";
 
-            var restaurantDiv = document.createElement("div");
-            restaurantDiv.innerHTML = `
+                        var restaurantDiv = document.createElement("div");
+                        restaurantDiv.innerHTML = `
                 <h1 class="Alltitle">${temp[0] || "null"}</h1>
                 <p class="text" style="display: inline-block;">餐廳總類&nbsp;</p><p style="display: inline-block;">${temp[1] || "null"}</p>`;
-            
-            // 使用 for 迴圈，避免無窮迴圈
-            for (var j = i + 1; j < count; j++) {
-                var next = items[j].split("|");
-                if (next[0] == temp[0] && next[0] != " ") {
-                    // 使用 inline-block，確保不換行
-                    restaurantDiv.innerHTML += `<p class="text"  style="display: inline-block;"></p><p style="display: inline-block;">${next[1] || "null"},</p>`;
-                    i = j; // 更新 i 到最後一個相同類別的項目，以避免重複處理
-                } else {
-                    break;
-                }
-            }
 
-            restaurantDiv.innerHTML += `
+                        // 使用 for 迴圈，避免無窮迴圈
+                        for (var j = i + 1; j < count; j++) {
+                            var next = items[j].split("|");
+                            if (next[0] == temp[0] && next[0] != " ") {
+                                // 使用 inline-block，確保不換行
+                                restaurantDiv.innerHTML += `<p class="text"  style="display: inline-block;"></p><p style="display: inline-block;">${next[1] || "null"},</p>`;
+                                i = j; // 更新 i 到最後一個相同類別的項目，以避免重複處理
+                            } else {
+                                break;
+                            }
+                        }
+
+                        restaurantDiv.innerHTML += `
 
                     <p class="text">餐廳地址${temp[2] || "null"}</p>`;
 
-            colDiv.appendChild(restaurantDiv);
-            parentContainer.appendChild(colDiv);
-        }
-    })
-    .catch(error => {
-        console.error('There has been a problem with your fetch operation:', error);
-    });
+                        colDiv.appendChild(restaurantDiv);
+                        parentContainer.appendChild(colDiv);
+                    }
+                })
+                .catch(error => {
+                    console.error('There has been a problem with your fetch operation:', error);
+                });
         }
 
 

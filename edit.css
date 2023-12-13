@@ -1,0 +1,346 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    /* box-sizing: border-box; */
+
+    display: flex;
+    flex-direction: column;
+    /* background-color: rgba(210, 210, 210, 0.2); */
+
+}
+
+.top {
+    height: 10%;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    background-color: rgba(210, 210, 210, 0.2);
+    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
+
+}
+.top h1{
+    margin-left: 2%;
+}
+.top img {
+    margin-left: 10%;
+}
+
+.bottom {
+    height: 90%;
+    width: 100%;
+    position: relative;
+}
+
+.menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: rgba(210, 210, 210, 0.2);
+    z-index: 1;
+
+}
+
+/* 選單邊框 */
+.menu-items {
+    margin-top: 10%;
+    display: none;
+}
+.menu-items li {
+    list-style: none;
+}
+
+.menu-items li a:hover {
+    background-color: white;
+    border-radius: 20px;
+}
+
+.menu-items li a {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    text-decoration: none;
+    position: relative;
+}
+.nav-links li a:hover:before {
+    content: "";
+    position: absolute;
+    left: -7px;
+    height: 50px;
+    width: 5px;
+    /* border-radius: 50%; */
+    background-color: rgb(255, 200, 0);
+}
+
+.nav-links li a:hover i,
+.nav-links li a:hover .link-name {
+    color: rgb(255, 200, 0);
+}
+
+.menu-items li a i {
+    font-size: 24px;
+    min-width: 45px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #70707071;
+}
+
+.menu-items li a .link-name {
+    padding-left: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #000000;
+    transition: all 0.2s ease;
+}
+.board {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+    /* background-color: rgb(255, 255, 255); */
+    z-index: 2;
+
+}
+
+.board-item{
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 10%;
+}
+/*開啟menu ----------------------------------- */
+
+.bottom.show .menu {
+
+    transition: 0.5s;
+    width: 15%;
+}
+
+.bottom.show .board {
+
+    transition: 0.5s;
+    left: 15%;
+    width: 85%;
+}
+
+.bottom.show .menu-items {
+    display: flex;
+}
+
+@media screen and (max-width:800px) {
+    .bottom.show .menu {
+
+        transition: 0.5s;
+        left: 0;
+        width: 50%;
+        z-index: 3;
+    }
+
+    .bottom.show .board {
+
+        transition: 0.5s;
+        left: 0;
+        width: 100%;
+    }
+}
+
+
+/* 顯示項目-------------------------------------------------------------------- */
+
+.allitem {
+    display: none;
+}
+
+.allitem.show {
+    display: block;
+}
+
+.allContainer {
+    border: solid;
+    display: flex;
+    padding-left: 20px;
+    flex-direction: column;
+
+}
+    
+.allitem form {
+    margin-right: 20px;
+}
+
+.allitem .go{
+    width: 100%;
+}
+
+/* 新增項目-------------------------------------------------------------------- */
+
+.additem {
+    display: none;
+}
+
+.additem.show {
+    display: block;
+}
+.allitem button{
+    width: 100%;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.addContainer {
+    border: solid;
+    display: flex;
+    padding-left: 20px;
+    flex-direction: column;
+
+}
+
+.allItemtext{
+    display: flex;
+    border: solid;
+}
+.allItemtext p{
+    font-size: 15px;
+
+}
+.allItemtext .wrap{
+    margin-right: auto;
+}
+.additem form {
+    /* width: 100%; */
+    /* font-size: 40px; */
+    margin-right: 20px;
+}
+
+.additem .go{
+    width: 100%;
+}
+
+/* 刪除項目-------------------------------------------- */
+
+.deleteitem {
+    display: none;
+}
+
+.deleteitem.show {
+    display: block;
+}
+
+.deleteitem button {
+    width: 100%;
+    font-size: 40px;
+}
+
+.deleteContainer {
+    border: solid;
+    display: flex;
+    padding-left: 20px;
+    flex-direction: column;
+
+}
+
+/* 修改項目-------------------------------------------- */
+
+.updateitem {
+    display: none;
+}
+
+.updateitem.show {
+    display: block;
+}
+
+.updateitem button {
+    width: 100%;
+    font-size: 40px;
+}
+
+.updateContainer {
+    border: solid;
+    display: flex;
+    padding-left: 20px;
+    flex-direction: column;
+
+}
+
+
+/* 修改項目-------------------------------------------- */
+
+.kinditem {
+    display: none;
+}
+
+.kinditem.show {
+    display: block;
+}
+
+.kinditem button {
+    width: 100%;
+    font-size: 40px;
+}
+
+.kindContainer {
+    border: solid;
+    display: flex;
+    padding-left: 20px;
+    flex-direction: column;
+
+}
+
+
+/* 修改項目-------------------------------------------- */
+
+.NTOUcard {
+    display: none;
+}
+
+.NTOUcard.show {
+    display: block;
+}
+
+.NTOUcard button {
+    width: 100%;
+    font-size: 40px;
+}
+
+.NTOUcardContainer {
+    border: solid;
+    display: flex;
+    padding-left: 20px;
+    flex-direction: column;
+
+}
+
+/* 修改項目-------------------------------------------- */
+
+.addCatatory {
+    display: none;
+}
+
+.addCatatory.show {
+    display: block;
+}
+
+.addCatatory button {
+    width: 100%;
+    font-size: 40px;
+}
+
+.addCatatoryContainer {
+    border: solid;
+    display: flex;
+    padding-left: 20px;
+    flex-direction: column;
+
+}

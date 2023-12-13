@@ -144,8 +144,10 @@ body {
 
         transition: 0.5s;
         left: 0;
-        width: 50%;
+        width: 70%;
         z-index: 3;
+        background-color: rgba(210, 210, 210);
+
     }
 
     .bottom.show .board {
@@ -157,31 +159,6 @@ body {
 }
 
 
-/* 顯示項目-------------------------------------------------------------------- */
-
-.allitem {
-    display: none;
-}
-
-.allitem.show {
-    display: block;
-}
-
-.allContainer {
-    border: solid;
-    display: flex;
-    padding-left: 20px;
-    flex-direction: column;
-
-}
-    
-.allitem form {
-    margin-right: 20px;
-}
-
-.allitem .go{
-    width: 100%;
-}
 
 /* 新增項目-------------------------------------------------------------------- */
 
@@ -195,7 +172,6 @@ body {
 .allitem button{
     width: 100%;
     font-size: 20px;
-    margin-top: 30px;
     margin-bottom: 10px;
 }
 
@@ -274,53 +250,6 @@ body {
 
 }
 
-
-/* 修改項目-------------------------------------------- */
-
-.kinditem {
-    display: none;
-}
-
-.kinditem.show {
-    display: block;
-}
-
-.kinditem button {
-    width: 100%;
-    font-size: 40px;
-}
-
-.kindContainer {
-    border: solid;
-    display: flex;
-    padding-left: 20px;
-    flex-direction: column;
-
-}
-
-
-/* 修改項目-------------------------------------------- */
-
-.NTOUcard {
-    display: none;
-}
-
-.NTOUcard.show {
-    display: block;
-}
-
-.NTOUcard button {
-    width: 100%;
-    font-size: 40px;
-}
-
-.NTOUcardContainer {
-    border: solid;
-    display: flex;
-    padding-left: 20px;
-    flex-direction: column;
-
-}
 
 /* 修改項目-------------------------------------------- */
 

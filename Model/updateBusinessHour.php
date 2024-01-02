@@ -1,7 +1,7 @@
 <?php
 //更新餐廳的營業時間資訊
 header("Content-type: text/html;charset=utf-8");
-include_once "db_conn.php";
+include_once "../db_conn.php";
 
 // $website=isset($_POST["website"]) ? $_POST["website"] : ' ';
 // $phone=isset($_POST["phone"]) ? $_POST["phone"] : ' ';

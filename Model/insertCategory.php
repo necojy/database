@@ -1,6 +1,6 @@
 <?php
 //新增餐廳總類資訊
-include_once "db_conn.php";
+include_once "../db_conn.php";
 
 $name = $_POST["name"];
 $kind = $_POST["kinds"];

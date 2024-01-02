@@ -1,0 +1,66 @@
+body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: rgba(233, 229, 229, 0.31);
+}
+
+.container {
+    display: flex;
+    height: 95vh;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.main {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25); */
+
+}
+.main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.main h1 {
+    position: absolute;
+    font-size: 7.5vw; /* 使用相對單位 vw */
+    font-weight: 600px;
+    color: rgb(96, 75, 75);
+    
+    top: 7%;
+    left: 3%;
+    z-index: 1;
+}
+
+.main p {
+    position: absolute;
+    top: 43%;
+    left: 5%;
+    z-index: 1;
+    
+    color: black;
+    font-size: 1.5vw;
+    line-height: 1.5;
+}
+.main button{
+    position: absolute;
+    top: 70%;
+    left: 5%;
+    cursor: pointer;
+    
+    background-color: #4eb8fa;
+    border-radius: 20px;
+    color: white;
+    width: 25vw;
+    height: 6vh;
+    font-size: 2vw;
+    box-shadow: -0.2vw 1vh 10px rgba(0, 0, 0, 0.25);  
+    border: white;
+}
+.main button:hover {
+    transform: translateY(-5px);
+}

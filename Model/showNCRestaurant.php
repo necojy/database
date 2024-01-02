@@ -1,5 +1,5 @@
 <?php
-include_once "db_conn.php";
+include_once "../db_conn.php";
 $query = ("SELECT * FROM restaurant where name in (SELECT name FROM category WHERE ntou_card = '是')");
 $stmt = $db->prepare($query);
 $stmt->execute();

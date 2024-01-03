@@ -13,6 +13,7 @@ for ($i = 0; $i < count($result); $i++)
     echo isset($result[$i]['website']) ? $result[$i]['website']."|" : ' '."|";
     echo isset($result[$i]['phone']) ? $result[$i]['phone']."|" : ' '."|";
     echo isset($result[$i]['address']) ? $result[$i]['address']."|" : ' '."|";
+    echo isset($result[$i]['image']) ? $result[$i]['image']."|" : ' '."|";
     echo isset($result[$i]['business_hour']) ? $result[$i]['business_hour']: ' ';
     echo "\n";
 }

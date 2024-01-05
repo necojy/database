@@ -25,9 +25,11 @@ body {
     box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
 
 }
-.top h1{
+
+.top h1 {
     margin-left: 2%;
 }
+
 .top img {
     margin-left: 10%;
 }
@@ -54,6 +56,7 @@ body {
     margin-top: 10%;
     display: none;
 }
+
 .menu-items li {
     list-style: none;
 }
@@ -70,6 +73,7 @@ body {
     text-decoration: none;
     position: relative;
 }
+
 .nav-links li a:hover:before {
     content: "";
     position: absolute;
@@ -102,6 +106,7 @@ body {
     color: #000000;
     transition: all 0.2s ease;
 }
+
 .board {
     position: absolute;
     top: 0;
@@ -115,17 +120,21 @@ body {
 
 }
 
-.board-item{
+.board-item {
     margin-top: 5%;
     margin-left: 5%;
     margin-right: 10%;
 }
+
 /*開啟menu ----------------------------------- */
 
 .bottom.show .menu {
 
     transition: 0.5s;
-    width: 15%;
+    left: 0;
+    width: 70%;
+    z-index: 3;
+    background-color: rgba(210, 210, 210);
 }
 
 .bottom.show .board {
@@ -139,7 +148,14 @@ body {
     display: flex;
 }
 
-@media screen and (max-width:800px) {
+@media screen and (min-width:1200px) {
+    .bottom.show .menu {
+        width: 25%;
+    }
+
+}
+
+@media screen and (max-width:650px) {
     .bottom.show .menu {
 
         transition: 0.5s;
@@ -158,8 +174,32 @@ body {
     }
 }
 
+/* 共用項目 */
+.content{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+    margin: 10px;
+    font-size: 120%;
 
+}
 
+.content .title{
+    width: 30%;
+    height: 50px;
+}
+
+.content .text{
+    width: 70%;
+    height: 50px;
+    margin-right: auto;
+}
+
+.content .go{
+
+}
 /* 新增項目-------------------------------------------------------------------- */
 
 .additem {
@@ -169,7 +209,8 @@ body {
 .additem.show {
     display: block;
 }
-.allitem button{
+
+.allitem button {
     width: 100%;
     font-size: 20px;
     margin-bottom: 10px;
@@ -183,24 +224,27 @@ body {
 
 }
 
-.allItemtext{
+.allItemtext {
     display: flex;
     border: solid;
 }
-.allItemtext p{
+
+.allItemtext p {
     font-size: 15px;
 
 }
-.allItemtext .wrap{
+
+.allItemtext .wrap {
     margin-right: auto;
 }
+
 .additem form {
     /* width: 100%; */
     /* font-size: 40px; */
     margin-right: 20px;
 }
 
-.additem .go{
+.additem .go {
     width: 100%;
 }
 

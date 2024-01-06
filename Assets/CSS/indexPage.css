@@ -1,7 +1,14 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    /* background-color: rgb(255, 238, 238); */
+}
+
 .col-md-5,
 .col-md-6 {
     border: solid;
-    /* 設定底部間隔，您可以調整這個值 */
 }
 
 .Allcontent {
@@ -24,19 +31,31 @@
     font-size: 30px;
 }
 
-.navbar-brand {
-    text-decoration: none;
-    font-size: 30px;
+.container-fluid{
+    background-color: rgb(255, 208, 200);
     height: 10vh;
+}
+
+.navbar-brand{
+    font-size: 35px;
+    font-weight: 600;
+    color: white;
+}
+.navbar-brand:hover{
+    color: white;
+
+}
+.navbar-nav a,.navbar-nav li{
+    font-size: 18px;
 }
 
 /* 海大卡數量 */
 .NumberOfNTOUCard {
-   height: 5vh;
-   padding-left: 80px;
-   font-size: 30px;
-   padding-top: 10px;
-   font-weight: 600;
+    height: 5vh;
+    padding-left: 80px;
+    font-size: 30px;
+    padding-top: 10px;
+    font-weight: 600;
 }
 
 
@@ -47,6 +66,7 @@
     display: none;
     align-items: center;
     position: fixed;
+    flex-direction: column;
     top: 0;
     left: 0;
     width: 100%;
@@ -55,54 +75,107 @@
     z-index: 99999;
 }
 
-
-/* card容器 */
-.card {
-    display: absolute;
-    top: 5%;
-    width: 80%;
-    height: 90vh;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: rgb(255, 195, 195);
-}
-
-@media (min-width: 767px) {
-    .card {
-        width: 50%;
-    }
-}
-
 /* 輪播容器 */
 .carousel {
     height: 85%;
-    width: 100%;
-
+    width: 40%;
+    margin-top: 2%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(196, 210, 255);
+    flex-direction: column;
+
+}
+
+@media (max-width: 750px) {
+    .carousel {
+        width: 70%;
+    }
+}
+
+/* CSS */
+.carousel-closeButton {
+    width: 100%;
+    font-size: 16px;
+
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border: none;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, 0.85);
+    font-weight: 600;
+    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+    transition: all 250ms;
+
+}
+
+.carousel-closeButton:hover,
+.carousel-closeButton:focus,
+.card-body button:hover,
+.card-body button:focus {
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+    color: rgba(0, 0, 0, 0.65);
+}
+
+.carousel-closeButton:hover,
+.card-body button:hover
+{
+    transform: translateY(-1px);
+}
+
+.carousel-closeButton:active,
+.card-body button:active
+ {
+    background-color: #F0F0F1;
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+    color: rgba(0, 0, 0, 0.65);
+    transform: translateY(0);
 }
 
 /* 輪播圖片 */
 .carousel-inner {
     width: 100%;
     height: 70vh;
-    /* overflow-y: scroll; */
+    /* background-image: linear-gradient(to right, #a1ffce, #faffd1); */
+    background: linear-gradient(to right, #fceabb, #ffdf87, #faffd1);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    overflow-y: auto;
 }
 
-.card-body {
-    height: 15%;
-    width: 100%;
-
+.carousel-inner p,
+.carousel-inner h1 {
     display: flex;
     justify-content: center;
-    background-color: rgb(255, 255, 255);
+    align-items: center;
+    padding-top: 10px;
+    font-weight: 500;
+}
+
+.carousel-inner img {
+    width: 100%;
+}
+
+
+.card-body {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffca5f;
+    border-top: 1px solid;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
 
 }
+
 
 .card-body button {
     width: 40%;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -111,29 +184,20 @@
     outline: none;
 
     margin-left: 10px;
-    /* padding: 10px; */
 
     border-radius: 3px;
     border: 0;
 
     color: #fff;
-    background: #ff5000;
+    background: #ff6017;
 
-    font-size: 80%;
+    font-size: 90%;
     font-weight: 600;
-    line-height: 2;
+    line-height: 3;
 
+    margin-top: 10px;
+    margin-bottom: 10px;
     cursor: pointer;
-}
-
-
-.content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    height: 60vh;
-    transform: translate(-50%, -50%);
-    z-index: 999992;
 }
 
 /* --------------------------------------------------- */
@@ -208,7 +272,8 @@
 }
 
 .card-btn:hover {
-    background: #ff7d7d;
+    background: #fae25f;
+    font-weight: 600;
     color: #fff;
 }
 

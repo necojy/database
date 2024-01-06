@@ -17,7 +17,7 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
 
-            <a class="navbar-brand" href="#">校區美食指南</a>
+            <h1 class="navbar-brand">校區美食指南</h1>
 
             <!-- 觸發折疊行為 目標ID"navbarSupportedContent" 預設:不展開 -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -29,10 +29,6 @@
             <!-- collapse：無論任何螢幕大小，你都不會看到有選單在頂部。 nav-collapse：當螢幕變小時，選單會改為直行顯示。 -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="HomePage.html">首頁</a>
-                    </li>
-
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -56,9 +52,9 @@
             </div>
         </div>
     </nav>
-    <p id="NumberOfNTOUCard" class="NumberOfNTOUCard"></p>
-
+    
     <!-- 顯示餐廳品項種類 -->
+    <p id="NumberOfNTOUCard" class="NumberOfNTOUCard"></p>
     <div class="container">
 
         <div class="row">
@@ -68,10 +64,12 @@
     <!-- /* 輪播容器 */ -->
     <div class="carousel-container">
         <!-- /* card容器 */ -->
-        <div class="card">
-            <button onclick="closeCarousel()">關閉</button>
+        <!-- <div class="card"> -->
             <!-- /* 輪播容器 */ -->
             <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+
+                <button onclick="closeCarousel()" class="carousel-closeButton">關閉</button>
+
                 <div class="carousel-inner" id="dynamicCarouselInner">
                     <!-- <div class="carousel-item active">
                         <img src="../image/t.png" class="d-block w-10">
@@ -83,15 +81,14 @@
                         <img src="../image/m.png" class="d-block w-10">
                     </div> -->
                 </div>
-            </div>
+                <div class="card-body">
+                    <button onclick="select()" class="select">按我選擇</button>
+                    <button onclick="restart()">重新抽籤</button>
+                </div>
+            <!-- </div> -->
 
 
-            <div class="card-body">
-                <h5 class="card-title"></h5>
-                <p class="card-text"></p>
-                <button onclick="select()" class="select">按我選擇</button>
-                <button onclick="restart()">重新抽籤</button>
-            </div>
+            
         </div>
     </div>
 

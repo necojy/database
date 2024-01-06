@@ -80,7 +80,7 @@
                 <div class="additem" id="additem">
                     <div class="addContainer">
 
-                        <form id=insertRestaurant action="../Model/insert.php" method="POST">
+                        <form id = insertRestaurant action="../Model/insert.php" method="POST">
 
                             <div class="content">
                                 <h1>新增資料</h1>
@@ -113,7 +113,7 @@
                 <!-- 刪除項目 -->
                 <div class="deleteitem" id="deleteitem">
                     <div class="deleteContainer">
-                        <form action="../Model/deleteRestaurant.php" method="POST">
+                        <form id = deleteRestaurant action="../Model/deleteRestaurant.php" method="POST">
                             <div class="content">
                                 <h1>刪除餐廳</h1>
                                 <p class="nameTitle title">餐廳名稱</p>
@@ -127,7 +127,7 @@
                 <!-- 修改項目 -->
                 <div class="updateitem" id="updateitem">
                     <div class="updateContainer">
-                        <form action="../Model/updateBusinessHour.php" method="POST">
+                        <form id = updateRestaurant action="../Model/updateBusinessHour.php" method="POST">
                             <div class="content">
                                 <h1>修改餐廳營業時間</h1>
 
@@ -435,8 +435,8 @@
                 });
         });
 
-        var deleteForm = document.getElementById('updateRestaurant');
-        deleteForm.addEventListener('submit', function (event) {
+        var updateForm = document.getElementById('updateRestaurant');
+        updateForm.addEventListener('submit', function (event) {
             event.preventDefault();
             Swal.fire({
                 title: "是否確定修改？",
@@ -452,7 +452,7 @@
                     const formElement = event.target;
                     const data = new FormData(formElement);
 
-                    fetch('../Model/deleteRestaurant.php', {
+                    fetch('../Model/updateBusinessHour.php', {
                         method: "POST",
                         body: data
                     })

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>編輯頁面</title>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../Assets/CSS/edit.css">
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
@@ -24,106 +24,87 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
 
     <div class="top">
-        <h1>校園美食指南</h1>
-        <a href="#" onclick="openMenu()"><img src="../image/left.png" alt=""></a>
+        <a href="indexPage.html" style="text-decoration: none;">校園美食指南</a>
+        <a href="#" onclick="openMenu()"><img src="../image/list.png"  alt=""></a>
     </div>
     <div class="bottom" id="bottom">
         <div class="menu" id="menu">
             <div class="menu-items">
                 <ul class="nav-links">
                     <li><a href="#" onclick="clearAll() , showAll()">
-                            <i><img src="../image/" alt=""></i>
+                            <i><img src="../image/AllRestaurant-balack.png" alt=""></i>
                             <span class="link-name">顯示全部店家</span>
                         </a></li>
                     <li><a href="#" onclick="showNTOU(),showNTOUcount()">
-                            <i><img src="keyrecord40.png" alt=""></i>
-                            <span class="link-name">可用海大卡的店家</span>
+                            <i><img src="../image/nu.png" alt=""></i>
+                            <span class="link-name">海大卡店家</span>
                         </a></li>
                     <li><a href="#" onclick="showCategory()">
-                            <i><img src="keyrecord40.png" alt=""></i>
+                            <i><img src="../image/food category.png" alt=""></i>
                             <span class="link-name">顯示店家總類</span>
                         </a></li>
 
 
                     <li><a href="#" onclick="clearAll() , showAddItem()">
-                            <i><img src="request40.png" alt=""></i>
+                            <i><img src="../image/append.png" alt=""></i>
                             <span class="link-name">新增店家</span>
                         </a></li>
                     <li><a href="#" onclick="clearAll() , showDeleteItem()">
-                            <i><img src="keyrecord40.png" alt=""></i>
+                            <i><img src="../image/delete.png" alt=""></i>
                             <span class="link-name">刪除店家</span>
                         </a></li>
                     <li><a href="#" onclick="clearAll() , showUpdateItem()">
-                            <i><img src="keyrecord40.png" alt=""></i>
+                            <i><img src="../image/update food.png" alt=""></i>
                             <span class="link-name">修改店家</span>
                         </a></li>
 
-
                     <li><a href="#" onclick="clearAll() ,showAddCategory()">
-                            <i><img src="keyrecord40.png" alt=""></i>
-                            <span class="link-name">新增店家種類</span>
+                        <i><img src="../image/insert catatory.png" alt=""></i>
+                        <span class="link-name">新增店家種類</span>
                         </a></li>
                 </ul>
             </div>
         </div>
 
-        <div class="board">
-
+        <div class="board" onclick="closeMenu()">
 
             <div class="container">
 
-                <p id="NumberOfNTOUCard" style="font-size: 30px;"></p>
+                <p id="NumberOfNTOUCard" class="NumberOfNTOUCard"></p>
                 <div class="row">
 
                 </div>
             </div>
             <div class="board-item">
-
-
                 <!-- 新增資料 -->
                 <div class="additem" id="additem">
-                    <h1>新增資料</h1>
                     <div class="addContainer">
 
                         <form id=insertRestaurant action="../Model/insert.php" method="POST">
 
                             <div class="content">
-                                <p class="title">餐廳名稱</p>
-                                <input type="text" name="name" class="text">
+                                <h1>新增資料</h1>
+                                <p class="name title">餐廳名稱</p>
+                                <p class="phone title">餐廳電話</p>
 
-                                <p class="title">餐廳網站</p>
-                                <input type="text" name="website" class="text">
+                                <input type="text" name="name" class="name">
+                                <input type="text" name="phone" class="phone">
 
-                                <p class="title">餐廳電話</p>
-                                <input type="text" name="phone" class="text">
+                                <p class="business_hour title">餐廳營業時間</p>
+                                <input type="text" name="business_hour" class="business_hour">
 
-                                <p class="title">餐廳地址</p>
-                                <input type="text" name="address" class="text">
+                                <p class="website title">餐廳網站</p>
+                                <input type="text" name="website" class="website">
 
-                                <p class="title">餐廳營業時間</p>
-                                <input type="text" name="business_hour" class="text">
+                                <p class="address title">餐廳地址</p>
+                                <input type="text" name="address" class="address">
 
-                                <p class="title">圖片網址</p>
-                                <input type="text" name="image" class="text">
+
+                                <p class="image title">圖片網址</p>
+                                <input type="text" name="image" class="image">
 
                                 <input type="submit" name="submit" value="新增" class="go">
                             </div>
-
-                            <!-- <div class="title">
-                                <p>餐廳名稱</p>
-                                <p>餐廳網站</p>
-                                <p>餐廳電話</p>
-                                <p>餐廳地址</p>
-                                <p>餐廳營業時間</p>
-                            </div>
-                            <hr>
-                            <div class="text">
-                                <p><input type="text" name="name"></p>
-                                <p><input type="text" name="website"></p>
-                                <p><input type="text" name="phone"></p>
-                                <p><input type="text" name="address"></p>
-                                <p><input type="text" name="business_hour"></p>
-                            </div> -->
                         </form>
                     </div>
 
@@ -131,42 +112,35 @@
 
                 <!-- 刪除項目 -->
                 <div class="deleteitem" id="deleteitem">
-                    <h1>刪除餐廳</h1>
-                    <form id=deleteRestaurant action="../Model/deleteRestaurant.php" method="POST">
-                        <div class="deleteContainer">
-                            <div class="title">
-                                <!-- 標題 -->
-                                <p>餐廳名稱</p>
+                    <div class="deleteContainer">
+                        <form action="../Model/deleteRestaurant.php" method="POST">
+                            <div class="content">
+                                <h1>刪除餐廳</h1>
+                                <p class="nameTitle title">餐廳名稱</p>
+                                <input type="text" name="name" class="name" placeholder="八方雲集" required>
+                                <button type="submit" class="go">確認刪除</button>
                             </div>
-                            <hr>
-                            <div class="text">
-                                <!-- 內容 -->
-                                <p><input type="text" name="name" placeholder="八方雲集" required></p>
-                            </div>
-                        </div>
-                        <button type="submit">確認刪除</button>
-                    </form>
+                        </form>
+                    </div>
                 </div>
 
                 <!-- 修改項目 -->
                 <div class="updateitem" id="updateitem">
-                    <h1>修改餐廳營業時間</h1>
-                    <form id = updateRestaurant action="../Model/updateBusinessHour.php" method="POST">
-                        <div class="updateContainer">
-                            <div class="title">
-                                <!-- 標題 -->
-                                <p>餐廳名稱</p>
-                                <p>餐廳營業時間</p>
+                    <div class="updateContainer">
+                        <form action="../Model/updateBusinessHour.php" method="POST">
+                            <div class="content">
+                                <h1>修改餐廳營業時間</h1>
+
+                                <p class="nameTitle title">餐廳名稱</p>
+                                <input type="text" name="name" class="name" placeholder="八方雲集" required>
+
+                                <p class="business_hour title">餐廳營業時間</p>
+                                <input type="text" name="business_hour" class="business_hour">
+
+                                <button type="submit" class="go">確認更改</button>
                             </div>
-                            <hr>
-                            <div class="text">
-                                <!-- 內容 -->
-                                <p><input type="text" name="name" required></p>
-                                <p><input type="text" name="business_hour" required></p>
-                            </div>
-                        </div>
-                        <button type="submit">確認更改</button>
-                    </form>
+                        </form>
+                    </div>
 
                 </div>
 
@@ -177,22 +151,22 @@
                     <div class="addCatatoryContainer">
 
                         <form action="../Model/insertCategory.php" method="POST">
-                            <div class="title">
-                                <p>餐廳名稱</p>
-                                <p>餐廳種類</p>
+                            <div class="content">
+                                <h1>新增餐廳種類</h1>
+                                <p class="nameTitle title">餐廳名稱</p>
+                                <input type="text" name="name" class="text" placeholder="八方雲集" required>
+
+                                <p class="nameTitle title">餐廳種類</p>
+                                <input type="text" name="kinds" class="text" placeholder="炸物" required>
+
+                                <input type="submit" name="submit" value="新增" class="go">
                             </div>
-                            <hr>
-                            <div class="text">
-                                <p><input type="text" name="name" required></p>
-                                <p><input type="text" name="kinds" required></p>
-                            </div>
-                            <input type="submit" name="submit" value="新增" class="go">
+
                         </form>
                     </div>
 
                 </div>
             </div>
-
 
         </div>
     </div>
@@ -527,7 +501,9 @@
         function openMenu() {
             bottom.classList.toggle("show");
         }
-
+        function closeMenu() {
+            bottom.classList.remove("show");
+        }
         function clearAll() {
             var parentContainer = document.querySelector(".row");
             parentContainer.innerHTML = '';

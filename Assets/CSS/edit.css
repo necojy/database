@@ -21,16 +21,27 @@ body {
     display: flex;
     align-items: center;
     flex-direction: row;
-    background-color: rgba(210, 210, 210, 0.2);
-    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
+    flex-wrap: nowrap;
+    background-color: rgba(252, 163, 20, 0.775);
+    box-shadow: 0px 5px 15px 0px rgba(101, 101, 101, 0.159);
 
+    z-index: 9999;
 }
 
-.top h1 {
+.top a {
+    height: 100%;
+    display: flex;
+    align-items: center;
+
     margin-left: 2%;
+    font-size: 35px;
+    color: white;
+    font-weight: 800;
 }
 
 .top img {
+    height: 100%;
+    width: 65px;
     margin-left: 10%;
 }
 
@@ -46,7 +57,6 @@ body {
     left: 0;
     width: 0%;
     height: 100%;
-    background-color: rgba(210, 210, 210, 0.2);
     z-index: 1;
 
 }
@@ -56,8 +66,11 @@ body {
     margin-top: 10%;
     display: none;
 }
-
+.nav-links{
+    width: 100%;
+}
 .menu-items li {
+    width: 100%;
     list-style: none;
 }
 
@@ -69,11 +82,14 @@ body {
 .menu-items li a {
     display: flex;
     align-items: center;
-    height: 50px;
+    height: 60px;
     text-decoration: none;
     position: relative;
 }
-
+.menu-items li img{
+    width: 60px;
+    margin-left: 10px;
+}
 .nav-links li a:hover:before {
     content: "";
     position: absolute;
@@ -91,12 +107,13 @@ body {
 
 .menu-items li a i {
     font-size: 24px;
-    min-width: 45px;
+    width: 45px;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #70707071;
+    margin-right: 10px;
 }
 
 .menu-items li a .link-name {
@@ -115,15 +132,20 @@ body {
     height: 100%;
     max-height: 100%;
     overflow-y: auto;
-    /* background-color: rgb(255, 255, 255); */
     z-index: 2;
-
 }
 
 .board-item {
-    margin-top: 5%;
-    margin-left: 5%;
-    margin-right: 10%;
+    margin-top: 2%;
+    /* margin-left: 5%;
+    margin-right: 10%; */
+}
+
+.NumberOfNTOUCard{
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 30px;
 }
 
 /*開啟menu ----------------------------------- */
@@ -132,9 +154,9 @@ body {
 
     transition: 0.5s;
     left: 0;
-    width: 70%;
+    width: 20%;
     z-index: 3;
-    background-color: rgba(210, 210, 210);
+    background-color: #feecd1;
 }
 
 .bottom.show .board {
@@ -148,9 +170,11 @@ body {
     display: flex;
 }
 
-@media screen and (min-width:1200px) {
+@media screen and (max-width:1100px) {
     .bottom.show .menu {
-        width: 25%;
+        width: 35%;
+        background-color: #feecd1;
+
     }
 
 }
@@ -160,9 +184,9 @@ body {
 
         transition: 0.5s;
         left: 0;
-        width: 70%;
+        width: 50%;
         z-index: 3;
-        background-color: rgba(210, 210, 210);
+        background-color: #feecd1;
 
     }
 
@@ -174,32 +198,51 @@ body {
     }
 }
 
+@media screen and (max-width:450px) {
+    .bottom.show .menu {
+
+        transition: 0.5s;
+        left: 0;
+        width: 70%;
+        z-index: 3;
+        background-color: #fbcf8a;
+
+    }
+}
+
 /* 共用項目 */
+
+.content p {
+    margin-top: 10px;
+    margin-bottom: 1px;
+    font-weight: 600;
+}
+
+.content .title {
+    font-size: 22px;
+
+}
 .content{
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    
-    margin: 10px;
-    font-size: 120%;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.content input{
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding-left: 10px;
+    font-size: 22px;
 
 }
 
-.content .title{
-    width: 30%;
-    height: 50px;
-}
-
-.content .text{
-    width: 70%;
-    height: 50px;
-    margin-right: auto;
-}
-
-.content .go{
+.content .go {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
 
 }
+
 /* 新增項目-------------------------------------------------------------------- */
 
 .additem {
@@ -210,40 +253,45 @@ body {
     display: block;
 }
 
-.allitem button {
-    width: 100%;
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
 .addContainer {
-    border: solid;
     display: flex;
-    padding-left: 20px;
-    flex-direction: column;
-
 }
 
-.allItemtext {
+.addContainer form {
     display: flex;
-    border: solid;
-}
-
-.allItemtext p {
-    font-size: 15px;
-
-}
-
-.allItemtext .wrap {
+    width: 70%;
     margin-right: auto;
+    margin-left: auto;
+    border: solid;
 }
 
-.additem form {
-    /* width: 100%; */
-    /* font-size: 40px; */
-    margin-right: 20px;
+.addContainer .content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
+.addContainer .content h1 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);   
+    margin-bottom: 4px;
+}
+
+.name {
+    width: 40%;
+}
+
+.phone {
+    width: 57%;
+    margin-left: 3%;
+}
+.business_hour, .website, .address ,.image{
+    width: 100%;
+}
 .additem .go {
     width: 100%;
 }
@@ -258,19 +306,48 @@ body {
     display: block;
 }
 
-.deleteitem button {
-    width: 100%;
-    font-size: 40px;
-}
-
 .deleteContainer {
-    border: solid;
     display: flex;
-    padding-left: 20px;
-    flex-direction: column;
-
 }
 
+.deleteContainer form {
+    display: flex;
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+    border: solid;
+}
+
+.deleteContainer .content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.deleteContainer .content h1 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);   
+    margin-bottom: 4px;
+}
+
+.deleteContainer .nameTitle {
+    width: 100%;
+}
+.deleteContainer .name{
+    width: 100%;
+}
+
+.deleteContainer button{
+    width: 100%;
+    margin-top: 10px;
+    border: none;
+}
 /* 修改項目-------------------------------------------- */
 
 .updateitem {
@@ -281,22 +358,54 @@ body {
     display: block;
 }
 
-.updateitem button {
-    width: 100%;
-    font-size: 40px;
-}
-
 .updateContainer {
-    border: solid;
     display: flex;
-    padding-left: 20px;
-    flex-direction: column;
-
 }
 
+.updateitem form {
+    display: flex;
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+    border: solid;
+}
 
+.updateitem .content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.updateitem .content h1 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);   
+    margin-bottom: 4px;
+}
+
+.updateitem .nameTitle{
+    width: 100%;
+}
+
+.updateitem .name{
+    width: 100%;
+}
+
+.updateitem .text{
+    width: 100%;
+}
+
+.updateitem button{
+    width: 100%;
+    margin-top: 10px;
+    border: none;
+}
 /* 修改項目-------------------------------------------- */
-
 .addCatatory {
     display: none;
 }
@@ -305,15 +414,51 @@ body {
     display: block;
 }
 
-.addCatatory button {
-    width: 100%;
-    font-size: 40px;
+.addCatatoryContainer {
+    display: flex;
 }
 
-.addCatatoryContainer {
-    border: solid;
+.addCatatory form {
     display: flex;
-    padding-left: 20px;
-    flex-direction: column;
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+    border: solid;
+}
 
+.addCatatory .content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.addCatatory .content h1 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);   
+    margin-bottom: 4px;
+}
+
+.addCatatory .nameTitle{
+    width: 100%;
+    margin-top: 10px;
+}
+
+.addCatatory .name{
+    width: 100%;
+}
+
+.addCatatory .text{
+    margin-top: 10px;
+    width: 80%;
+}
+
+.addCatatory input{
+    width: 100%;
+    margin-top: 10px;
 }

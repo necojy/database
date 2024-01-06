@@ -382,7 +382,7 @@ function restart() {
 }
 
 function openCarousel() {
-    document.querySelector('.carousel-container').style.display = 'block';
+    document.querySelector('.carousel-container').style.display = 'flex';
 }
 
 function closeCarousel() {
@@ -414,7 +414,7 @@ fetch('../Model/showAllRestaurant.php', {
             var temp = items[i].split("|");
 
             var colDiv = document.createElement("div");
-            colDiv.className = "card col-12 col-md-5 me-auto ms-auto";
+            // colDiv.className = "card col-12 col-md-5 me-auto ms-auto";
 
             var restaurantDiv = document.createElement("div");
             // <p><img src="https://lh5.googleusercontent.com/p/AF1QipNTUNHkT4TOCuG8Uc10iYlLlXtRq0EsTcER1vd0=w408-h306-k-no" width="100%"></p>

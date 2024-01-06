@@ -30,11 +30,12 @@ try {
     if ($errorCode === 1062) {
         // Duplicate entry for a unique key violation
         $response['status'] = "error";
-        $response['message'] = "重複的主鍵值";
+        $response['message'] = "此店家名稱已存在！";
+        //$response['message'] = $errorInfo[2];
     } else {
         // Other PDOException
         $response['status'] = "error";
-        $response['message'] = "發生其他錯誤";
+        $response['message'] = "發生錯誤：" . $e->getMessage();
     }
 }
 

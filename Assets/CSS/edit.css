@@ -458,6 +458,11 @@ body {
     width: 80%;
 }
 
+.addCatatory .form-select{
+    margin-top: 10px;
+    width: 80%;
+}
+
 .addCatatory input{
     width: 100%;
     margin-top: 10px;

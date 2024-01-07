@@ -39,6 +39,10 @@ body {
     font-weight: 800;
 }
 
+.right-aligned {
+    margin-left: auto;
+}
+
 .top img {
     height: 100%;
     width: 65px;

@@ -19,6 +19,10 @@
 </head>
 
 <body>
+    <?php 
+    include '../Model/checkLogin.php'; 
+    ?>
+
     <script src="../bootstrap/js/popper.min.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
@@ -26,6 +30,7 @@
     <div class="top">
         <a href="indexPage.html" style="text-decoration: none;">校園美食指南</a>
         <a href="#" onclick="openMenu()"><img src="../image/list.png" alt=""></a>
+        <a href="#" class="right-aligned" onclick="logout()">登出</a>
     </div>
     <div class="bottom" id="bottom">
         <div class="menu" id="menu">
@@ -556,6 +561,76 @@
             });
         });
 
+        function logout() {
+            // 先檢查是否已登入
+            fetch('../Model/checkLogin.php')
+                .then(response => {
+                    //console.log('Response:', response);
+                    // 檢查回應狀態是否 OK
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    // 將回應解析為 JSON
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.logged_in) {
+                        fetch('../Model/logout.php')
+                            .then(response => {
+                                console.log('Response:', response);
+                                // 檢查回應狀態是否 OK
+                                if (!response.ok) {
+                                    throw new Error('Network response was not ok');
+                                }
+                                // 將回應解析為 JSON
+                                return response.json();
+                            })
+                            .then(data => {
+                                if (data.logged_out) {
+                                    // 登出成功，重新定向到 indexPage.html
+                                    window.location.href = 'indexPage.html';
+                                } else {
+                                    // 登出失敗
+                                    console.error('Logout failed:', data.message);
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error during logout:', error);
+                            });
+                    } else {
+                        // 未登入
+                        console.error('未登入');
+                        window.location.href = 'indexPage.html';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error checking login status:', error);
+                });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            checkLogin();
+        });
+        
+        function checkLogin() {
+            fetch('../Model/checkLogin.php')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (!data.logged_in) {
+                        // 未登入直接進入此頁面時，重新導向至 indexPage.html
+                        window.location.href = 'indexPage.html';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error checking login status:', error);
+                });
+        }
+        
         // ---------------------------------------------------------------------------------------------
 
         let additem = document.getElementById("additem");

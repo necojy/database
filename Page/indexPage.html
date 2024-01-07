@@ -7,12 +7,14 @@
     <title>首頁</title>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../Assets/CSS/indexPage.css">
-   
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
+
 </head>
 
 <body>
     <script src="../bootstrap/js/popper.min.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
@@ -47,12 +49,12 @@
                         <a class="nav-link" href="#" onclick="openCarousel()">今天想來點 ?</a>
                     </li>
                 </ul>
-                <a class="nav-link" href="edit.html">編輯頁面</a>
+                <a class="nav-link" href="#" onclick="checkLoginAndRedirect('edit.html')">編輯頁面</a>
 
             </div>
         </div>
     </nav>
-    
+
     <!-- 顯示餐廳品項種類 -->
     <p id="NumberOfNTOUCard" class="NumberOfNTOUCard"></p>
     <div class="container">
@@ -65,13 +67,13 @@
     <div class="carousel-container">
         <!-- /* card容器 */ -->
         <!-- <div class="card"> -->
-            <!-- /* 輪播容器 */ -->
-            <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+        <!-- /* 輪播容器 */ -->
+        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
 
-                <button onclick="closeCarousel()" class="carousel-closeButton">關閉</button>
+            <button onclick="closeCarousel()" class="carousel-closeButton">關閉</button>
 
-                <div class="carousel-inner" id="dynamicCarouselInner">
-                    <!-- <div class="carousel-item active">
+            <div class="carousel-inner" id="dynamicCarouselInner">
+                <!-- <div class="carousel-item active">
                         <img src="../image/t.png" class="d-block w-10">
                     </div>
                     <div class="carousel-item">
@@ -80,15 +82,15 @@
                     <div class="carousel-item">
                         <img src="../image/m.png" class="d-block w-10">
                     </div> -->
-                </div>
-                <div class="card-body">
-                    <button onclick="select()" class="select">按我選擇</button>
-                    <button onclick="restart()">重新抽籤</button>
-                </div>
+            </div>
+            <div class="card-body">
+                <button onclick="select()" class="select">按我選擇</button>
+                <button onclick="restart()">重新抽籤</button>
+            </div>
             <!-- </div> -->
 
 
-            
+
         </div>
     </div>
 
@@ -115,6 +117,97 @@
     </section>
 
     <script src="../Assets/JS/indexPage.js"></script>
+    <script>
+        function checkLoginAndRedirect(targetPage) {
+            // 檢查 SESSION 登入
+            fetch('../Model/checkLogin.php')
+                .then(response => {
+                    //console.log('Response:', response);
+                    // 檢查回應狀態是否 OK
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    // 將回應解析為 JSON
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Data:', data);
+                    if (data.logged_in) {
+                        // 如果已經登入，重定向到編輯頁面
+                        window.location.href = targetPage;
+                    } else {
+                        // 如果未登入，顯示 SweetAlert2 登入表單
+                        showLoginForm(targetPage);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        function showLoginForm() {
+            let usernameInput;
+            let passwordInput;
+
+            Swal.fire({
+                title: 'Login',
+                html: `
+                <input type="text" id="username" class="swal2-input" placeholder="Username">
+                <input type="password" id="password" class="swal2-input" placeholder="Password">
+              `,
+                confirmButtonText: 'Sign in',
+                focusConfirm: false,
+                didOpen: () => {
+                    const popup = Swal.getPopup();
+                    usernameInput = popup.querySelector('#username');
+                    passwordInput = popup.querySelector('#password');
+                    usernameInput.onkeyup = (event) => event.key === 'Enter' && Swal.clickConfirm();
+                    passwordInput.onkeyup = (event) => event.key === 'Enter' && Swal.clickConfirm();
+                },
+                preConfirm: () => {
+                    const username = usernameInput.value;
+                    const password = passwordInput.value;
+                    if (!username || !password) {
+                        Swal.showValidationMessage('請輸入帳號或密碼');
+                        return false;
+                    }
+                    // Call PHP to validate the username and password
+                    return fetch('../Model/login.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ username, password }),
+                    })
+                        .then(response => {
+                            //console.log('Response:', response);
+                            // 檢查回應狀態是否 OK
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            // 將回應解析為 JSON
+                            return response.json();
+                        })
+                        .then(data => {
+                            //console.log('Data:', data);
+                            if (data.success) {
+                                // Validation successful, redirect to the edit page
+                                window.location.href = 'edit.html';
+                            } else {
+                                // Validation failed, show error message
+                                Swal.showValidationMessage(data.message);
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            Swal.showValidationMessage('An error occurred while processing the request');
+                        });
+                },
+            });
+        }
+
+    </script>
+
 
 </body>
 

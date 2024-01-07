@@ -30,7 +30,7 @@
     <div class="top">
         <a href="indexPage.html" style="text-decoration: none;">校園美食指南</a>
         <a href="#" onclick="openMenu()"><img src="../image/list.png" alt=""></a>
-        <a href="#" class="right-aligned" onclick="logout()">登出</a>
+        <!-- <a href="#" class="right-aligned" onclick="logout()">登出</a> -->
     </div>
     <div class="bottom" id="bottom">
         <div class="menu" id="menu">
@@ -67,6 +67,10 @@
                             <i><img src="../image/insert catatory.png" alt=""></i>
                             <span class="link-name">新增店家種類</span>
                         </a></li>
+                    <li class="logoutButton"><a href="#" onclick="clearAll() ,showAddCategory()">
+                            <i><img src="../image/logoutIcon.png" alt=""></i>
+                            <span class="link-name" onclick="logout()">登出</span>
+                    </a></li>
                 </ul>
             </div>
         </div>

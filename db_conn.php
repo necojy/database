@@ -1,6 +1,6 @@
   <?php
   $user = 'root'; //資料庫使用者名稱
-  $password = '123456'; //資料庫的密碼
+  $password = '1234'; //資料庫的密碼
   try {
     $db = new
       PDO('mysql:host=localhost;dbname=final_project;charset=utf8', $user, $password);

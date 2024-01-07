@@ -39,9 +39,10 @@ body {
     font-weight: 800;
 }
 
-.right-aligned {
+/* .right-aligned {
+    border: solid;
     margin-left: auto;
-}
+} */
 
 .top img {
     height: 100%;
@@ -152,6 +153,10 @@ body {
     font-size: 30px;
 }
 
+.logoutButton{
+    border-top: solid;
+    margin-top: 35%;
+}
 /*開啟menu ----------------------------------- */
 
 .bottom.show .menu {
@@ -160,7 +165,8 @@ body {
     left: 0;
     width: 20%;
     z-index: 3;
-    background-color: #feecd1;
+    background-color: #fbcf8a;
+
 }
 
 .bottom.show .board {
@@ -177,11 +183,19 @@ body {
 @media screen and (max-width:1100px) {
     .bottom.show .menu {
         width: 35%;
-        background-color: #feecd1;
+        background-color: #fbcf8a;
 
     }
 
 }
+
+@media screen and (max-width:1200px) {
+    .logoutButton{
+        border-top: solid;
+        margin-top: 15%;
+    }
+}
+
 
 @media screen and (max-width:650px) {
     .bottom.show .menu {
@@ -190,7 +204,7 @@ body {
         left: 0;
         width: 50%;
         z-index: 3;
-        background-color: #feecd1;
+        background-color: #fbcf8a;
 
     }
 
